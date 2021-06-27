@@ -1,0 +1,99 @@
+{%  extends 'blog/usermain.html' %}
+
+{% block content %}
+
+<style type="text/css">
+
+
+.outPopUp {
+  position: absolute;
+  width: 300px;
+  height: 200px;
+  z-index: 15;
+  top: 50%;
+  left: 50%;
+  margin: -100px 0 0 -150px;
+
+}
+.wrapper {
+ 
+  text-align: center;
+}
+
+
+
+
+.profile-pic{
+		max-width: 200px;
+		max-height:200px;
+		margin: 0 auto;
+		border-radius: 50%;
+		margin-left:  40.5%;
+	}
+
+
+.posts{
+		max-width: 500px;
+		max-height:500px;
+		margin: 0 auto;
+		
+
+	}
+
+</style>
+
+
+<div class="card text-center">
+			  <div class="card-header">
+			    {{p.userPerson.name}}
+			  </div>
+			  <div class="card-body">
+			    <h5 class="card-title">What Your Friend's Are Doing </h5>
+			  </div>
+			  <div class="card-footer text-muted">
+			  	{{p.caption}}
+			  </div>
+			</div>
+
+
+{% for x in followingUsers %}
+  
+  	{%  for p in x.u2.post_set.all %}
+  		<div class="card text-center">
+			  <div class="card-header">
+			    {{p.userPerson.name}}
+			  </div>
+			  <div class="card-body">
+			    <h5 class="card-title"><img src="{{p.picture.url}}"/> </h5>
+			  </div>
+			  <div class="card-footer text-muted">
+			  	{{p.caption}}
+			  </div>
+			</div>
+			<br>
+		
+  {% endfor %}
+
+
+  
+  {%  for p in x.u2.blog_set.all %}
+  		<div class="card text-center">
+			  <div class="card-header">
+			    {{p.userPerson.name}}
+			  </div>
+			  <div class="card-body">
+			    <h5 class="card-title">{{p.content}}</h5>
+			  </div>
+			  <div class="card-footer text-muted">
+			  </div>
+			</div>
+			<br>
+		
+  	
+
+  {% endfor %}
+<br>
+{% endfor %}
+
+
+{% endblock%}

@@ -1,0 +1,38 @@
+{%  extends 'blog/usermain.html' %}
+{% load static %}
+{% block content %}
+<style>
+.outPopUp {
+  position: absolute;
+  width: 300px;
+  height: 200px;
+  z-index: 15;
+  top: 50%;
+  left: 50%;
+  margin: -100px 0 0 -150px;
+
+}
+.wrapper {
+ 
+  text-align: center;
+}
+
+</style>
+
+
+<h1>Create Post</h1>
+<form method="POST" action="" enctype="multipart/form-data">
+    {% csrf_token %}
+ {{form.userPerson.as_hidden}}
+
+ <div class="">
+ <p class="wrapper">Hey! What's in your mind!</p>
+ <p class="wrapper">{{form.caption}}</p>
+ <br>
+ <p class="wrapper">Upload Something interesting</p>
+ <p class="wrapper">{{form.picture}}</p>
+ <br>
+<p class="wrapper"><input type="submit" value="Upload"></p>
+</div>
+</form>
+{% endblock%}

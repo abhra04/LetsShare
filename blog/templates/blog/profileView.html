@@ -1,0 +1,94 @@
+{%  extends 'blog/usermain.html' %}
+
+{% block content %}
+<style>
+.profile-pic{
+		max-width: 200px;
+		max-height:200px;
+		border-radius: 50%;
+	}
+
+.posts{
+		max-width: 500px;
+		max-height:500px;
+		margin: 0 auto;
+		
+
+	}
+.caption{
+		
+		
+
+	}
+.name{
+	font-size: 25px;
+}
+.big{
+	font-size: 70px;
+}
+
+
+  
+.wrapper {
+ 
+  text-align: center;
+}
+</style>
+
+	<div class="wrapper">
+	  <img class="profile-pic" src="{{request.user.person.profile_pic.url}}" >
+	  <br>
+	  <a class='name'>{{user.name}}</a>
+	</div>
+
+	<div class="big wrapper">
+		<p>Your Posts </p>
+	</div>
+
+<div class="wrapper">
+      {% for post in posts %}
+				
+			
+			<div class="card text-center">
+			  <div class="card-header">
+			    {{post.caption}}
+			  </div>
+			  <div class="card-body">
+			    <h5 class="card-title"><img src="{{post.picture.url}}"/> </h5>
+			  </div>
+			  <div class="card-footer text-muted">
+			  </div>
+			</div>
+			
+			
+			<br>
+			
+			<br>
+			
+      {% endfor %}
+	<div class="big wrapper">
+					<p>Your Blogs </p>
+				</div>
+
+
+      {% for blog in blogs %}
+				
+      <div class="card text-center">
+			  <div class="card-body">
+			    {{blog.content}}
+			  </div>
+			  <div class="card-footer text-muted">
+			    
+			  </div>
+			</div>
+
+	
+			
+			
+          {% endfor %}
+</div>
+				
+
+
+{% endblock %}
+ 
